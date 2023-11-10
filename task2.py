@@ -17,7 +17,10 @@ df = pd.read_csv(data, sep=r',', skiprows=1, names=["Class", "Age", "Menopause",
 
 # Replace '?' with NaN
 df.replace('?', np.nan, inplace=True)
+
 null_counts = df.isnull().sum()
+st.write("Number of null values in each column before replaced:")
+st.write(null_counts)
 # Fill NaN values with the mode
 df = df.fillna(df.mode().iloc[0])
 
@@ -36,9 +39,10 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 
 st.header("EDA")
 
-st.write("Number of null values in each column:")
-st.write(null_counts)
 
+null_counts = df.isnull().sum()
+st.write("Number of null values in each column after replaced:")
+st.write(null_counts)
 
 
 st.subheader("Distribution of samples")
