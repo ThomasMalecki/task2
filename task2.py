@@ -13,6 +13,7 @@ data = 'breast-cancer.data'
 df = pd.read_csv(data, sep=r',', skiprows=1, names=["Class", "Age", "Menopause", "Tumor_Size",
                                                      "Inv_Nodes", "Node_Caps", "Deg_Malig",
                                                      "Breast", "Breast_Quad", "Irradiat"])
+valueCount = df[col].value_counts()
 
 # Replace '?' with NaN
 df.replace('?', np.nan, inplace=True)
@@ -39,7 +40,7 @@ st.write("Number of null values in each column:")
 st.write(null_counts)
 
 
-valueCount = df[col].value_counts()
+
 st.subheader("Distribution of samples")
 st.bar_chart(valueCount)
 
