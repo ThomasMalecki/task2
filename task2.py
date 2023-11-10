@@ -57,15 +57,6 @@ null_counts = df.isnull().sum()
 st.subheader("Null Values:")
 st.write(null_counts)
 
-# Display distribution of the target variable
-st.subheader("Distribution of Target Variable:")
-plt.figure(figsize=(8, 6))
-df['Class'].value_counts().plot(kind='bar', color='skyblue')
-plt.xlabel("Class")
-plt.ylabel("Number of Observations")
-plt.title("Distribution of Class")
-st.pyplot()
-
 st.sidebar.text("This is a Streamlit app for univariate EDA on the Breast Cancer dataset.")
 st.subheader("Distribution of samples")
 valueCount = df[col].value_counts()
