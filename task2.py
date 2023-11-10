@@ -53,7 +53,9 @@ gradient_boosting_accuracy = accuracy_score(y_test, gradient_boosting_prediction
 # Plot the distribution of the target variable
 
 valueCount = df[col].value_counts()
+st.subheader("Distribution of samples")
 st.bar_chart(valueCount)
+
 
 
 # Display accuracy scores
