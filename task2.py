@@ -52,7 +52,6 @@ st.write(df.head())
 st.subheader("Summary Statistics:")
 st.write(df.describe())
 
-st.sidebar.text("This is a Streamlit app for univariate EDA on the Breast Cancer dataset.")
 st.subheader("Distribution of samples")
 valueCount = df[col].value_counts()
 st.bar_chart(valueCount)
