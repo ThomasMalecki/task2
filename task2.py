@@ -66,21 +66,6 @@ plt.ylabel("Number of Observations")
 plt.title("Distribution of Class")
 st.pyplot()
 
-# Univariate analysis for other features (you can customize this based on your dataset)
-for col in df.columns[1:]:
-    st.subheader(f"Univariate Analysis for {col}:")
-    plt.figure(figsize=(8, 6))
-    sns.histplot(df[col], kde=True, color='skyblue')
-    plt.xlabel(col)
-    plt.ylabel("Frequency")
-    plt.title(f"Distribution of {col}")
-    st.pyplot()
-
-    # Display unique values for categorical columns
-    if df[col].dtype == 'O':  # Check if the column is of object (string) type
-        st.write(f"Unique values for {col}:")
-        st.write(df[col].unique())
-
 st.sidebar.text("This is a Streamlit app for univariate EDA on the Breast Cancer dataset.")
 st.subheader("Distribution of samples")
 valueCount = df[col].value_counts()
