@@ -13,7 +13,7 @@ data = 'breast-cancer.data'
 df = pd.read_csv(data, sep=r',', skiprows=1, names=["Class", "Age", "Menopause", "Tumor_Size",
                                                      "Inv_Nodes", "Node_Caps", "Deg_Malig",
                                                      "Breast", "Breast_Quad", "Irradiat"])
-valueCount = df[col].value_counts()
+null_counts = df.isnull().sum()
 
 # Replace '?' with NaN
 df.replace('?', np.nan, inplace=True)
@@ -35,13 +35,14 @@ y = df[col]
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 st.header("EDA")
-null_counts = df.isnull().sum()
+
 st.write("Number of null values in each column:")
 st.write(null_counts)
 
 
 
 st.subheader("Distribution of samples")
+valueCount = df[col].value_counts()
 st.bar_chart(valueCount)
 
 st.header("Model Selection")
