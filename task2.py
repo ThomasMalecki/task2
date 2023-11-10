@@ -17,7 +17,7 @@ df = pd.read_csv(data, sep=r',', skiprows=1, names=["Class", "Age", "Menopause",
 
 # Replace '?' with NaN
 df.replace('?', np.nan, inplace=True)
-
+st.header("EDA")
 null_counts = df.isnull().sum()
 st.write("Number of null values in each column before replaced:")
 st.write(null_counts)
@@ -37,7 +37,7 @@ y = df[col]
 # Split the data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-st.header("EDA")
+
 
 
 null_counts = df.isnull().sum()
