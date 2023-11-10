@@ -13,11 +13,11 @@ data = 'breast-cancer.data'
 df = pd.read_csv(data, sep=r',', skiprows=1, names=["Class", "Age", "Menopause", "Tumor_Size",
                                                      "Inv_Nodes", "Node_Caps", "Deg_Malig",
                                                      "Breast", "Breast_Quad", "Irradiat"])
-null_counts = df.isnull().sum()
+
 
 # Replace '?' with NaN
 df.replace('?', np.nan, inplace=True)
-
+null_counts = df.isnull().sum()
 # Fill NaN values with the mode
 df = df.fillna(df.mode().iloc[0])
 
