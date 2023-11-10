@@ -51,12 +51,10 @@ gradient_boosting_predictions = gradient_boosting_model.predict(X_test)
 gradient_boosting_accuracy = accuracy_score(y_test, gradient_boosting_predictions) * 100
 
 # Plot the distribution of the target variable
-plt.figure(figsize=(8, 6))
-df[col].value_counts().plot(kind='bar', color='skyblue')
-plt.xlabel(col)
-plt.ylabel('Number of Observations')
-plt.title(f'Distribution of {col}')
-st.pyplot()
+
+valueCount = df[col].value_counts()
+st.bar_chart(valueCount)
+
 
 # Display accuracy scores
 st.write(f"Random Forest Accuracy: {random_forest_accuracy:.2f}%")
