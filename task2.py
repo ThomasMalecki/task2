@@ -32,33 +32,21 @@ y = df[col]
 # Split the data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Random Forest Model
-random_forest_model = RandomForestClassifier()
-random_forest_model.fit(X_train, y_train)
-random_forest_predictions = random_forest_model.predict(X_test)
-random_forest_accuracy = accuracy_score(y_test, random_forest_predictions) * 100
-
-# Support Vector Machine Model
-svm_model = SVC(kernel='linear')
-svm_model.fit(X_train, y_train)
-svm_predictions = svm_model.predict(X_test)
-svm_accuracy = accuracy_score(y_test, svm_predictions) * 100
-
-# Gradient Boosting Model
-gradient_boosting_model = GradientBoostingClassifier()
-gradient_boosting_model.fit(X_train, y_train)
-gradient_boosting_predictions = gradient_boosting_model.predict(X_test)
-gradient_boosting_accuracy = accuracy_score(y_test, gradient_boosting_predictions) * 100
-
-# Plot the distribution of the target variable
-
 valueCount = df[col].value_counts()
 st.subheader("Distribution of samples")
 st.bar_chart(valueCount)
 
+st.header("Model Selection")
+selected_model = st.selectbox("Select a machine learning model", ["Random Forest", "Gradient Boosting", "SVM"])
 
+if selected_model == "Random Forest":
+    model = RandomForestClassifier()
+elif selected_model == "Gradient Boosting":
+    model = GradientBoostingClassifier()
+else:
+    model = SVC()
 
-# Display accuracy scores
-st.write(f"Random Forest Accuracy: {random_forest_accuracy:.2f}%")
-st.write(f"SVM Accuracy: {svm_accuracy:.2f}%")
-st.write(f"Gradient Boosting Accuracy: {gradient_boosting_accuracy:.2f}%")
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+accuracy = accuracy_score(y_test, y_pred)
+st.write(f"{selected_model} Model Accuracy: {accuracy:.2f}")
